@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limo Anywhere Assistant</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Limo Anywhere Assistant</h1>
+            <div class="tabs">
+                <button id="textTabBtn" class="tab-btn active">Text</button>
+                <button id="imageTabBtn" class="tab-btn">Image</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Text Input Tab -->
+            <div id="textTab" class="tab-content active">
+                <textarea id="textInput" placeholder="Paste client information here..."></textarea>
+                <button id="processTextBtn" class="primary-btn">Process Text</button>
+            </div>
+
+            <!-- Image Input Tab -->
+            <div id="imageTab" class="tab-content">
+                <div id="dropZone" class="drop-zone">
+                    <p>Drop image here or</p>
+                    <label for="imageInput" class="upload-btn">Upload Image</label>
+                    <input type="file" id="imageInput" accept="image/*" hidden>
+                    <div id="imagePreview" class="image-preview"></div>
+                </div>
+                <button id="processImageBtn" class="primary-btn" disabled>Process Image</button>
+                <div class="mobile-upload">
+                    <button id="mobileUploadBtn" class="secondary-btn">
+                        <span class="icon">📱</span>Upload from Phone
+                    </button>
+                    <div id="qrContainer" class="qr-container hidden"></div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="resultsSection" class="results-section hidden">
+                <h2>Extracted Information</h2>
+                <div class="results-container">
+                    <table id="resultsTable" class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Field</th>
+                                <th>Value</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsBody">
+                            <!-- Results will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="action-buttons">
+                    <button id="clearBtn" class="secondary-btn">Clear</button>
+                    <button id="fillFormBtn" class="primary-btn">Fill Form</button>
+                </div>
+            </div>
+
+            <!-- Status Messages -->
+            <div id="statusContainer" class="status-container hidden">
+                <div id="statusMessage" class="status-message"></div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by AI & UI.Vision</p>
+        </footer>
+    </div>
+
+    <!-- Load Scripts -->
+    <script src="utils.js"></script>
+    <script src="ai-processor.js"></script>
+    <script src="ocr-processor.js"></script>
+    <script src="image-processor.js"></script>
+    <script src="field-mapping.js"></script>
+    <script src="uivision-connector.js"></script>
+    <script src="mobile-bridge.js"></script>
+    <script src="qr-generator.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
